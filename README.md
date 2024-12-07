@@ -71,7 +71,7 @@ While English uses spaces to separate words, Japanese text is written continuous
 
 7. To check Redis data, visit
 
-    check `http://http://localhost:8081`
+    check `http://localhost:8081`
 
 
 
