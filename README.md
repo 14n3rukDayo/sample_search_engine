@@ -44,7 +44,7 @@ While English uses spaces to separate words, Japanese text is written continuous
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/sample-search-engine.git
+    git@github.com:qSc0p3X/sample_search_engine.git
    ```
 2. Navigate to the project directory:
     ```bash
