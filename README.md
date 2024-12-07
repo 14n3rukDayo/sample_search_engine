@@ -37,7 +37,9 @@ This is a sample project where I created a full-text search engine tailored for 
 
 Japanese differs significantly from English in terms of text processing.  
 While English uses spaces to separate words, Japanese text is written continuously without spaces. This requires the use of a morphological analyzer to break sentences into meaningful tokens for effective searching.
+## System Architecture
 
+![search_engine](search_engine.png)
 ## How to Get Started
 
 1. Clone the repository:
@@ -70,5 +72,7 @@ While English uses spaces to separate words, Japanese text is written continuous
 7. To check Redis data, visit
 
     check `http://http://localhost:8081`
+
+
 
 
