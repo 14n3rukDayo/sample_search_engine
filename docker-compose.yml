@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app/:/src/app
+    environment:
+      - API_URL=http://tokenizer:5000
+      - REDIS_URL=redis:6379
+      - PASSWORD=
+      - DB=0
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+  
+  tokenizer:
+    build:
+      context: ./tokenizer
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    volumes:
+      - ./tokenizer/:/app/tokenizer
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis

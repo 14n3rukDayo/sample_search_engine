@@ -1,0 +1,95 @@
+openapi: 3.0.0
+info:
+  title: search engine api
+  description: search engine api
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local server
+
+paths:
+  /search:
+    post:
+      summary: Search for documents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearcherRequest'
+      responses:
+        200:
+          description: Successful search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+
+  /document:
+    post:
+      summary: Add a new document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddDocumentRequest'
+      responses:
+        200:
+          description: Document successfully added
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddDocumentResponse'
+
+components:
+  schemas:
+    SearcherRequest:
+      type: object
+      properties:
+        searchWord:
+          type: string
+          description: The keyword to search
+      required:
+        - searchWord
+
+    DocumentResponse:
+      type: object
+      properties:
+        documentId:
+          type: integer
+          description: Unique ID of the document
+        description:
+          type: string
+          description: Description of the document
+      required:
+        - documentId
+        - description
+
+    SearchResponse:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentResponse'
+      required:
+        - documents
+
+    AddDocumentRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Description of the document to be added
+      required:
+        - description
+
+    AddDocumentResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Confirmation message
+      required:
+        - message
